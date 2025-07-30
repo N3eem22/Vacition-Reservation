@@ -1,0 +1,70 @@
+﻿@model RegisterVM
+
+<div class="container pt-5">
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-success bg-gradient text-white rounded-top-4 py-4">
+            <h2 class="text-center mb-0">Register</h2>
+        </div>
+        <div class="card-body p-5">
+            <form method="post" class="row g-3">
+                <input asp-for="RedirectUrl" type="hidden" />
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="col-md-12 position-relative">
+                    <input asp-for="Email" class="form-control rounded-pill ps-5 py-3" aria-required="true" placeholder="Email" />
+                    <span class="position-absolute top-50 translate-middle-y ps-3 text-muted">
+                        <i class="bi bi-envelope"></i>
+                    </span>
+                    <span asp-validation-for="Email" class="text-danger small d-block mt-1"></span>
+                </div>
+
+                <div class="col-md-6 position-relative">
+                    <input asp-for="Name" class="form-control rounded-pill ps-5 py-3" placeholder="Full Name" />
+                    <span class="position-absolute top-50 translate-middle-y ps-3 text-muted">
+                        <i class="bi bi-person"></i>
+                    </span>
+                    <span asp-validation-for="Name" class="text-danger small d-block mt-1"></span>
+                </div>
+
+                <div class="col-md-6 position-relative">
+                    <input asp-for="PhoneNumber" class="form-control rounded-pill ps-5 py-3" placeholder="Phone Number" />
+                    <span class="position-absolute top-50 translate-middle-y ps-3 text-muted">
+                        <i class="bi bi-telephone"></i>
+                    </span>
+                    <span asp-validation-for="PhoneNumber" class="text-danger small d-block mt-1"></span>
+                </div>
+
+                <div class="col-md-6 position-relative">
+                    <input asp-for="Password" type="password" class="form-control rounded-pill ps-5 py-3" placeholder="Password" />
+                    <span class="position-absolute top-50 translate-middle-y ps-3 text-muted">
+                        <i class="bi bi-lock"></i>
+                    </span>
+                    <span asp-validation-for="Password" class="text-danger small d-block mt-1"></span>
+                </div>
+
+                <div class="col-md-6 position-relative">
+                    <input asp-for="ConfirmPassword" type="password" class="form-control rounded-pill ps-5 py-3" placeholder="Confirm Password" />
+                    <span class="position-absolute top-50 translate-middle-y ps-3 text-muted">
+                        <i class="bi bi-lock-fill"></i>
+                    </span>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger small d-block mt-1"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <select asp-for="Role" asp-items="@Model.RoleList" class="form-select rounded-pill py-3 ps-4">
+                        <option disabled selected>- Select Role -</option>
+                    </select>
+                    <span asp-validation-for="Role" class="text-danger small d-block mt-1"></span>
+                </div>
+
+                <div class="col-12 mt-3">
+                    <button type="submit" class="btn btn-success btn-lg w-100 rounded-pill">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
